@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.wav binary
+*.apk binary
+*.zip binary
+*.pdf binary
+*.p12 binary

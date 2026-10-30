@@ -1,0 +1,11 @@
+{
+  "name": "three-beats-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test-engine.js",
+    "preview": "node preview.mjs",
+    "build:offline": "node build-offline.mjs"
+  }
+}

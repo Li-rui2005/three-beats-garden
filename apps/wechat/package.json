@@ -1,0 +1,11 @@
+{
+  "name": "three-beats-wechat-minigame",
+  "version": "1.0.0",
+  "description": "慢三拍微信小游戏工程，包含八关、原生 Canvas 界面与本地进度。",
+  "private": true,
+  "scripts": {
+    "test": "node tools/check-project.cjs && node tests/logic.test.js && node tests/runtime.test.js",
+    "check": "node tools/check-project.cjs",
+    "preview": "node tools/serve-preview.cjs"
+  }
+}

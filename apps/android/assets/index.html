@@ -1,0 +1,1518 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="theme-color" content="#173c34">
+  <meta name="description" content="和三步之前的自己，一起点亮一座小花园。一个关于移动、等待与默契的原创网页解谜小游戏。">
+  <title>慢三拍 · Three Beats Later</title>
+  <style>600;700&display=swap');
+:root {
+  --paper:#f3f2ea;
+  --ink:#243c34;
+  --muted:#798478;
+  --line:#d9ddd0;
+  --green:#153c32;
+  --lime:#d1ec9e;
+  --gold:#f3c76e;
+  --mint:#8cd4bd;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family:
+    Arial,
+    "Microsoft YaHei",
+    sans-serif;
+  font-size: 14px;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #899e40;
+  outline-offset: 4px;
+}
+button {
+  color: inherit;
+}
+button:disabled {
+  cursor: default;
+  opacity: .35;
+}
+.site-shell {
+  max-width: 1360px;
+  margin: auto;
+  padding: 0 60px;
+}
+.topbar {
+  height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.brand small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 1.65px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+.brand-mark {
+  font-size: 32px;
+  font-weight: 400;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+}
+.top-actions {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.edition {
+  font-size: 11px;
+  color: #7c8679;
+  letter-spacing: 1px;
+}
+.icon-button {
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 22px;
+}
+.icon-button span {
+  font-size: 11px;
+}
+.help-button {
+  border: 1px solid #cbd1c3;
+  border-radius: 30px;
+  background: transparent;
+  padding: 10px 17px;
+  font-size: 12px;
+}
+.help-button span {
+  margin-left: 18px;
+}
+.game-layout {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 700px);
+  justify-content: space-between;
+  gap: 65px;
+  padding: 44px 0 30px;
+}
+.intro {
+  padding-top: 13px;
+}
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.7px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #63725f;
+}
+.tiny-spark {
+  font-size: 21px;
+  color: #729054;
+}
+h1 {
+  font-family:
+    "Noto Serif SC",
+    "Songti SC",
+    SimSun,
+    serif;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.52;
+  letter-spacing: 1px;
+  margin: 22px 0 16px;
+}
+.word-flower {
+  position: relative;
+}
+.word-flower > span {
+  position: absolute;
+  color: #829b56;
+  font-size: 21px;
+  top: -12px;
+  right: -23px;
+  animation: slow-spin 30s linear infinite;
+}
+.lead {
+  font-size: 14px;
+  color: #717b70;
+  line-height: 1.95;
+  margin: 0 0 24px;
+}
+.rule-card {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0 14px;
+  max-width: 280px;
+}
+.rule-people {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.mini-orb {
+  width: 19px;
+  height: 19px;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .133);
+}
+.gold {
+  background: var(--gold);
+}
+.mint {
+  background: var(--mint);
+}
+.rule-dots {
+  color: #85947d;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.delay-tag {
+  font-size: 10px;
+  margin-left: 10px;
+  padding: 4px 8px;
+  background: #e6eada;
+  border-radius: 3px;
+  color: #69765d;
+}
+.rule-card p {
+  font-size: 12px;
+  line-height: 1.95;
+  color: #7e8879;
+  margin: 11px 0 0;
+}
+.rule-card b {
+  color: #4d604e;
+  font-weight: 400;
+}
+.chapter-copy {
+  margin-top: 25px;
+}
+.small-label {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.chapter-copy .small-label {
+  color: #7a866f;
+}
+.chapter-copy h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+.chapter-copy p {
+  color: #7e8879;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+  min-height: 42px;
+}
+.progress-copy {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  max-width: 280px;
+  color: #7b866f;
+  font-size: 10px;
+}
+.progress-track {
+  height: 3px;
+  background: #dce0d3;
+  margin-top: 8px;
+  max-width: 280px;
+}
+.progress-track > span {
+  display: block;
+  height: 100%;
+  background: #8a9e60;
+  transition: width .5s;
+}
+.quiet-note {
+  margin-top: 23px;
+  color: #a0a594;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.play-area {
+  min-width: 0;
+}
+.board-panel {
+  background: var(--green);
+  border-radius: 19px;
+  color: #d9e4cf;
+  padding: 22px 26px 17px;
+  box-shadow: 0 14px 35px rgba(33, 62, 48, .063);
+  overflow: hidden;
+  position: relative;
+}
+.board-panel:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  background:
+    repeating-radial-gradient(
+      ellipse at 2% 82%,
+      transparent 0 27px,
+      #c7e7bd04 28px 29px,
+      transparent 30px 54px);
+}
+.board-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.garden-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.live-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--lime);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(209, 236, 158, .4);
+}
+.board-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 10px;
+  color: #94b09d;
+}
+.board-stats b {
+  font: 16px Georgia, serif;
+  color: #e1ecd4;
+  margin-left: 7px;
+}
+.board-wrap {
+  position: relative;
+  margin: 5px 0 0;
+  aspect-ratio: 560/453;
+  touch-action: none;
+  user-select: none;
+}
+#board {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.board-bottom {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 9px;
+  color: #abc0ac;
+  position: relative;
+}
+.board-bottom > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.board-caption {
+  margin-left: auto;
+  opacity: .65;
+}
+.legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.echo-strip {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 2px;
+}
+.echo-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 106px;
+}
+.echo-label .small-label {
+  font-size: 10px;
+  color: #4e6551;
+}
+.echo-label > span:last-child {
+  font-size: 9px;
+  color: #95a08b;
+}
+.queue {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.queue-item:not(:last-child):after {
+  content: "→";
+  font-size: 11px;
+  color: #b0b7a5;
+}
+.queue-box {
+  height: 43px;
+  border: 1px solid #d4ddca;
+  background: #e8eddf;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 53px;
+}
+.queue-box.first {
+  border-color: #a7bc90;
+  background: #e0e9d4;
+}
+.queue-box i {
+  font-size: 8px;
+  font-style: normal;
+  color: #89987a;
+}
+.queue-box b {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5b7354;
+}
+.queue-end {
+  font-size: 8px;
+  color: #a2ab96;
+  line-height: 1.8;
+  white-space: nowrap;
+}
+.queue-end b {
+  font-weight: 400;
+  color: #75856b;
+}
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 8px;
+  gap: 12px;
+}
+.move-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.move-controls > button:not(.wait-button),
+.vertical-controls button {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background: #eeeee5;
+  border: 1px solid #d4dacb;
+  font-size: 17px;
+}
+.vertical-controls {
+  display: flex;
+  gap: 5px;
+}
+.move-controls button:hover,
+.utility-controls button:hover {
+  background: #e0e7d4;
+}
+.move-controls button:active {
+  transform: translateY(1px);
+}
+.move-controls .wait-button {
+  height: 32px;
+  padding: 0 10px;
+  background: transparent;
+  border: 1px solid #c9d2bc;
+  border-radius: 5px;
+  font-size: 11px;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+kbd {
+  font: 9px Arial;
+  color: #8b967e;
+  margin-left: 8px;
+}
+.utility-controls {
+  display: flex;
+  gap: 7px;
+}
+.utility-controls button {
+  border: 0;
+  background: transparent;
+  font-size: 17px;
+  padding: 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.utility-controls button span {
+  font-size: 10px;
+  margin-left: 3px;
+}
+.feedback {
+  font-size: 10px;
+  color: #829073;
+  min-height: 30px;
+  line-height: 1.7;
+  padding-top: 3px;
+}
+.feedback.important {
+  color: #506c3f;
+}
+.bottom-bar {
+  border-top: 1px solid var(--line);
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  gap: 46px;
+  padding: 20px 0;
+}
+.chapter-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.chapter-label small {
+  display: block;
+  font-size: 8px;
+  color: #9aA28e;
+  letter-spacing: 1.5px;
+  margin-top: 6px;
+}
+#levels {
+  display: flex;
+  gap: 9px;
+}
+#levels button {
+  width: 39px;
+  height: 39px;
+  border: 1px solid #d4daca;
+  background: transparent;
+  border-radius: 50%;
+  font: 12px Georgia, serif;
+  position: relative;
+  color: #809073;
+}
+#levels button.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #edf3e6;
+}
+#levels button.completed:after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #98af63;
+  border-radius: 50%;
+  bottom: -6px;
+  left: calc(50% - 2px);
+}
+#levels button:disabled {
+  opacity: .42;
+}
+#levels button:not(:disabled):hover {
+  border-color: #69844c;
+}
+.footer-note {
+  font-size: 10px;
+  color: #8e9a83;
+  margin-left: auto;
+  text-align: right;
+}
+.footer-note span {
+  display: block;
+  color: #a7ae9c;
+  font-size: 9px;
+  margin-top: 6px;
+}
+.win-panel {
+  position: absolute;
+  top: 8%;
+  right: 9%;
+  bottom: 8%;
+  left: 9%;
+  border: 1px solid #748f5b;
+  border-radius: 15px;
+  background: rgba(242, 243, 234, .97);
+  box-shadow: 0 15px 40px rgba(6, 37, 28, .333);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: var(--ink);
+  padding: 20px;
+  z-index: 3;
+  animation: pop .4s ease;
+}
+.win-panel[hidden] {
+  display: none;
+}
+.win-flower {
+  font-size: 59px;
+  color: #849f4e;
+  line-height: 1;
+  margin-bottom: 17px;
+  animation: slow-spin 25s linear infinite;
+}
+.win-panel .small-label {
+  font-size: 8px;
+  color: #8a977a;
+}
+.win-panel h2 {
+  font-family:
+    "Noto Serif SC",
+    SimSun,
+    serif;
+  font-size: 26px;
+  font-weight: 500;
+  margin: 16px 0 8px;
+}
+.win-panel p {
+  font-size: 12px;
+  color: #869077;
+  margin-bottom: 23px;
+}
+.primary-button {
+  background: var(--ink);
+  border: 0;
+  border-radius: 7px;
+  color: #f0f3e7;
+  font-size: 12px;
+  padding: 14px 20px;
+  min-width: 170px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+.primary-button:hover {
+  background: #42623e;
+}
+.text-button {
+  background: transparent;
+  border: 0;
+  color: #8b967c;
+  font-size: 10px;
+  margin-top: 15px;
+  padding: 5px;
+}
+dialog {
+  width: min(460px, calc(100% - 32px));
+  border: 1px solid #d6ddcb;
+  border-radius: 18px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 36px;
+  box-shadow: 0 25px 80px rgba(16, 39, 27, .267);
+}
+dialog::backdrop {
+  background: rgba(16, 44, 36, .467);
+  backdrop-filter: blur(4px);
+}
+.dialog-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  border: 0;
+  background: transparent;
+  font-size: 25px;
+  color: #78856f;
+}
+dialog h2 {
+  font-family:
+    "Noto Serif SC",
+    SimSun,
+    serif;
+  font-weight: 500;
+  font-size: 27px;
+  margin: 17px 0;
+}
+dialog p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #798570;
+}
+.guide-step {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+.guide-step > span {
+  font: 20px Georgia;
+  color: #9ba87b;
+  padding-top: 13px;
+}
+.guide-step p {
+  margin: 8px 0;
+}
+.guide-step b {
+  font-weight: 500;
+  color: #415d40;
+}
+.guide-tip {
+  padding: 12px 0;
+  border-top: 1px solid #d9dece;
+  margin-top: 20px;
+}
+dialog .primary-button {
+  width: 100%;
+}
+.actor {
+  transition: transform .19s cubic-bezier(.2, .8, .2, 1);
+}
+.echo-path {
+  stroke-dasharray: 4 7;
+  animation: dash 8s linear infinite;
+}
+.flower-petal {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe 4s ease-in-out infinite;
+}
+.board-shake {
+  animation: shake .2s;
+}
+.target-ring {
+  animation: breathe 3s ease-in-out infinite;
+}
+.glow-seed {
+  animation: breathe 2.5s ease-in-out infinite;
+}
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes breathe {
+  50% {
+    opacity: .6;
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -60;
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes shake {
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+@media (min-width: 1450px) {
+  .game-layout {
+    padding-top: 52px;
+  }
+  .site-shell {
+    padding-top: 10px;
+  }
+}
+@media (max-width: 1120px) {
+  .site-shell {
+    padding: 0 34px;
+  }
+  .game-layout {
+    grid-template-columns: 260px minmax(0, 650px);
+    gap: 36px;
+  }
+  h1 {
+    font-size: 35px;
+  }
+  .control-row {
+    flex-wrap: wrap;
+  }
+  .board-panel {
+    padding: 20px;
+  }
+  .utility-controls {
+    gap: 12px;
+  }
+  .top-actions {
+    gap: 18px;
+  }
+  .edition {
+    display: none;
+  }
+  .echo-strip {
+    gap: 12px;
+  }
+  .queue-end {
+    display: none;
+  }
+  .bottom-bar {
+    gap: 30px;
+  }
+}
+@media (max-width: 760px) {
+  .site-shell {
+    padding: 0 20px;
+  }
+  .topbar {
+    height: 80px;
+  }
+  .brand {
+    font-size: 17px;
+    gap: 9px;
+  }
+  .brand-mark {
+    width: 35px;
+    height: 35px;
+    font-size: 26px;
+  }
+  .brand small {
+    font-size: 7px;
+  }
+  .top-actions {
+    gap: 8px;
+  }
+  .icon-button span {
+    display: none;
+  }
+  .help-button {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  .help-button span {
+    margin-left: 9px;
+  }
+  .game-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0 15px;
+    gap: 22px;
+  }
+  .intro {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 10px;
+  }
+  .intro .eyebrow {
+    grid-column: 1/-1;
+    font-size: 8px;
+  }
+  h1 {
+    font-size: 29px;
+    line-height: 1.5;
+    margin: 15px 0 7px;
+  }
+  .lead {
+    font-size: 11px;
+    margin: 17px 0 0;
+    line-height: 1.8;
+    align-self: center;
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .rule-card,
+  .quiet-note {
+    display: none;
+  }
+  .chapter-copy {
+    grid-column: 1/-1;
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 13px;
+    align-items: center;
+  }
+  .chapter-copy .small-label {
+    font-size: 8px;
+  }
+  .chapter-copy h2 {
+    font-size: 14px;
+    margin: 0;
+  }
+  .chapter-copy p {
+    grid-column: 1/-1;
+    min-height: 0;
+    margin-top: 7px;
+    font-size: 10px;
+  }
+  .progress-copy,
+  .progress-track {
+    display: none;
+  }
+  .board-panel {
+    border-radius: 13px;
+    padding: 18px 16px 16px;
+  }
+  .garden-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .board-stats {
+    gap: 12px;
+    font-size: 9px;
+  }
+  .board-stats b {
+    font-size: 14px;
+  }
+  .board-caption {
+    display: none;
+  }
+  .board-bottom {
+    justify-content: center;
+    gap: 27px;
+    font-size: 9px;
+  }
+  .board-wrap {
+    aspect-ratio: 560/475;
+  }
+  .echo-strip {
+    padding: 14px 0;
+    gap: 10px;
+  }
+  .echo-label {
+    min-width: 83px;
+  }
+  .echo-label .small-label {
+    font-size: 9px;
+  }
+  .echo-label > span:last-child {
+    font-size: 8px;
+  }
+  .queue {
+    gap: 5px;
+  }
+  .queue-item {
+    gap: 5px;
+  }
+  .queue-box {
+    height: 37px;
+    min-width: 41px;
+    gap: 5px;
+  }
+  .queue-box b {
+    font-size: 10px;
+  }
+  .queue-box i {
+    font-size: 7px;
+  }
+  .move-controls {
+    gap: 5px;
+  }
+  .move-controls > button:not(.wait-button),
+  .vertical-controls button {
+    width: 34px;
+    height: 36px;
+  }
+  .move-controls .wait-button {
+    height: 36px;
+    padding: 0 9px;
+    font-size: 10px;
+  }
+  kbd {
+    font-size: 8px;
+    margin-left: 5px;
+  }
+  .control-row {
+    gap: 9px;
+    padding-top: 13px;
+  }
+  .utility-controls {
+    margin-left: auto;
+    gap: 7px;
+  }
+  .utility-controls button {
+    font-size: 18px;
+    padding: 4px;
+  }
+  .utility-controls button span {
+    display: none;
+  }
+  .feedback {
+    font-size: 9px;
+    padding-top: 5px;
+  }
+  .bottom-bar {
+    gap: 15px;
+    flex-wrap: wrap;
+    min-height: 90px;
+    padding: 18px 0 26px;
+  }
+  .chapter-label {
+    font-size: 10px;
+    min-width: 48px;
+  }
+  .chapter-label small {
+    font-size: 6px;
+  }
+  #levels {
+    gap: 6px;
+    flex: 1;
+    justify-content: space-between;
+  }
+  #levels button {
+    width: 29px;
+    height: 29px;
+    font-size: 10px;
+  }
+  .footer-note {
+    display: none;
+  }
+  .win-panel {
+    top: 4%;
+    right: 6%;
+    bottom: 4%;
+    left: 6%;
+    padding: 15px;
+  }
+  .win-flower {
+    font-size: 42px;
+    margin-bottom: 12px;
+  }
+  .win-panel h2 {
+    font-size: 21px;
+    margin: 12px 0 5px;
+  }
+  .win-panel p {
+    font-size: 10px;
+    margin-bottom: 16px;
+  }
+  .primary-button {
+    font-size: 11px;
+    padding: 12px 18px;
+  }
+  dialog {
+    padding: 28px;
+  }
+  .word-flower > span {
+    font-size: 15px;
+    right: -17px;
+    top: -8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+dialog {
+  width: calc(100% - 32px);
+  max-width: 460px;
+}
+.brand {
+  pointer-events: none;
+}
+@supports not (aspect-ratio: 1 / 1) {
+  .board-wrap {
+    height: 0;
+    padding-top: 83.93%;
+  }
+  #board {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 760px) {
+    .board-wrap {
+      padding-top: 84.82%;
+    }
+  }
+}
+</style>
+</head>
+<body>
+<div class="site-shell">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="慢三拍首页"><span class="brand-mark">↶</span><span>慢三拍<small>THREE BEATS LATER · OFFLINE</small></span></a>
+    <div class="top-actions"><span class="edition">一个关于等待的小小实验 · 001</span><button id="sound" class="icon-button" aria-label="开启声音" aria-pressed="false">♪<span>声音关</span></button><button id="help" class="help-button">如何玩 <span>↗</span></button></div>
+  </header>
+
+  <main class="game-layout">
+    <aside class="intro">
+      <div class="eyebrow"><span class="tiny-spark">✳</span> A LITTLE PUZZLE ABOUT TIME</div>
+      <h1>和过去的你，<br>碰个<span class="word-flower">面<span>✳</span></span>。</h1>
+      <p class="lead">你向前一步，回声慢三拍。<br>留一点时间，给另一个自己。</p>
+      <div class="rule-card">
+        <div class="rule-people"><span class="mini-orb gold"></span><span class="rule-dots">· · ·</span><span class="mini-orb mint"></span><span class="delay-tag">延迟 3 步</span></div>
+        <p><b>金色是你，青色是你的回声。</b><br>让两位同时停在各自的花座上，<br>小花园就会醒来。</p>
+      </div>
+      <div class="chapter-copy"><span class="small-label">当前花园 / <span id="chapter-number">01</span></span><h2 id="level-title">初次回响</h2><p id="level-description">用三步，认识另一个自己。</p></div>
+      <div class="progress-copy"><span id="progress-text">已点亮 0 / 8 座花园</span><span>✳</span></div><div class="progress-track"><span id="progress-fill"></span></div>
+      <div class="quiet-note">不必走得更快。<br>等一等，也是一种前进。</div>
+    </aside>
+
+    <section class="play-area" aria-label="解谜游戏">
+      <div class="board-panel">
+        <div class="board-top"><span class="garden-label"><span class="live-dot"></span> THE ECHO GARDEN</span><div class="board-stats"><span>步数 <b id="moves">00</b></span><span>最短 <b id="par">—</b></span></div></div>
+        <div class="board-wrap" id="board-wrap"><svg id="board" viewBox="0 0 560 470" role="img" aria-label="花园棋盘：使用方向键移动金色角色，空格等待"></svg>
+          <div id="win-panel" class="win-panel" hidden><span class="win-flower">✳</span><div class="small-label" id="win-kicker">GARDEN AWAKENED</div><h2 id="win-title">刚刚好，遇见你。</h2><p id="win-detail"></p><button id="next" class="primary-button">下一座花园 <span>→</span></button><button id="replay" class="text-button">再走一次</button></div>
+        </div>
+        <div class="board-bottom"><span><i class="legend-dot gold"></i>此刻的你</span><span><i class="legend-dot mint"></i>三步前的你</span><span class="board-caption" id="board-caption">同时抵达，让花盛开</span></div>
+      </div>
+
+      <div class="echo-strip"><div class="echo-label"><span class="small-label">回声预告</span><span>接下来，它会走到</span></div><div class="queue" id="queue"></div><span class="queue-end">然后是<br><b>现在的你 ↗</b></span></div>
+
+      <div class="control-row"><div class="move-controls" aria-label="移动控制"><button data-action="left" aria-label="向左移动">←</button><div class="vertical-controls"><button data-action="up" aria-label="向上移动">↑</button><button data-action="down" aria-label="向下移动">↓</button></div><button data-action="right" aria-label="向右移动">→</button><button data-action="wait" class="wait-button">等一拍 <kbd>空格</kbd></button></div><div class="utility-controls"><button id="undo" title="撤销 (Z)">↶ <span>撤销</span></button><button id="reset" title="重来 (R)">⟳ <span>重来</span></button><button id="hint" title="获取下一步提示">✧ <span>提示</span></button></div></div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite">试着按方向键移动。空格可以原地等一拍。</div>
+    </section>
+  </main>
+
+  <footer class="bottom-bar"><div class="chapter-label">花园手记 <small>CHAPTERS</small></div><nav id="levels" aria-label="选择关卡"></nav><span class="footer-note">8 座花园，一点点默契。<span>无需计时 · 随时撤销</span></span></footer>
+</div>
+
+<dialog id="help-dialog"><button class="dialog-close" id="close-help" aria-label="关闭玩法说明">×</button><div class="eyebrow">A SMALL GUIDE</div><h2>给回声一点时间。</h2><p>方向键 / WASD 移动金色的你，空格原地等待。也可以点屏幕上的方向按钮，或在棋盘上滑动。</p><div class="guide-step"><span>01</span><p><b>回声会重走你三步前的位置。</b><br>下方三个坐标，按顺序预告它接下来会到哪里。</p></div><div class="guide-step"><span>02</span><p><b>两个人，同时抵达。</b><br>金色的你停在金色花座，青色回声停在青色花座，就能过关。</p></div><div class="guide-step"><span>03</span><p><b>替彼此留一扇门。</b><br>任一角色压住方形机关，就能打开同图案的门。门在行动开始时判定，回声可以穿门。</p></div><p class="guide-tip">撞墙不计步。Z 撤销，R 重来。没有倒计时，慢慢想就好。</p><button id="start-help" class="primary-button">知道了，去碰个面 <span>→</span></button></dialog>
+<script>(() => {
+  var __defProp = Object.defineProperty;
+  var __defProps = Object.defineProperties;
+  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop))
+          __defNormalProp(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+
+  // ../three-beats/dist/engine.js
+  var actions = ["up", "right", "down", "left", "wait"];
+  var vectors = { up: [0, -1], right: [1, 0], down: [0, 1], left: [-1, 0], wait: [0, 0] };
+  var same = (a, b) => a.x === b.x && a.y === b.y;
+  var at = (x, y) => ({ x, y });
+  var make = (id, title, kicker, description, hint, grid, start, goal, echoGoal, switches = [], gates = []) => ({ id, title, kicker, description, hint, grid, start: at(...start), goal: at(...goal), echoGoal: at(...echoGoal), switches: switches.map((p) => at(...p)), gates: gates.map((p) => at(...p)), par: [4, 6, 6, 7, 9, 12, 18, 15][id - 1] });
+  var levels = [
+    make(1, "初次回响", "01 / 向过去打个招呼", "先经过青色花座，再走到金色花座。回声会慢你三步。", "一路向右。第 4 步时，回声会来到你第 1 步的位置。", [
+      "#######",
+      "#######",
+      "#######",
+      "#.....#",
+      "#######",
+      "#######",
+      "#######"
+    ], [1, 3], [5, 3], [2, 3]),
+    make(2, "等一等自己", "02 / 停留也是一步", "你可以停留。空格会让回声继续追上来。", "先经过下方的青色花座，再向上走到金色花座。到了以后，等一拍。", [
+      "#######",
+      "#######",
+      "####.##",
+      "####.##",
+      "#....##",
+      "#######",
+      "#######"
+    ], [1, 4], [4, 2], [4, 4]),
+    make(3, "留一道门", "03 / 让过去帮个忙", "站在方形机关上，藤门就会打开。你和回声都能触发它。", "走到门前，等回声站上机关，再穿过去。门后的花座上不必着急。", [
+      "#######",
+      "#######",
+      "#######",
+      "#.....#",
+      "#######",
+      "#######",
+      "#######"
+    ], [1, 3], [5, 3], [3, 3], [[2, 3]], [[4, 3]]),
+    make(4, "绕一点远路", "04 / 先安排，再出发", "机关在岔路里。给过去的自己留下一份工作。", "先踏上上方的机关，再回主路。门前等一拍，回声会替你开门。", [
+      "#######",
+      "#######",
+      "#..####",
+      "#.....#",
+      "#..####",
+      "#######",
+      "#######"
+    ], [1, 3], [5, 3], [3, 3], [[2, 2]], [[4, 3]]),
+    make(5, "多留两拍", "05 / 把停留交给回声", "两道门，需要更长的开门时间。你停多久，回声也会停多久。", "先在机关上等两次，再沿路穿过两道门。到金色花座后，再等回声。", [
+      "#######",
+      "#######",
+      "####..#",
+      "###..##",
+      "#...###",
+      "#######",
+      "#######"
+    ], [1, 4], [5, 2], [4, 3], [[2, 4]], [[3, 3], [4, 2]]),
+    make(6, "接力", "06 / 下一份约定", "机关之间可以接力。规划好脚步，花园会替你把门留着。", "第一个机关与第一道门之间隔了一格。第二个机关在转角，别错过。", [
+      "#######",
+      "#####.#",
+      "####..#",
+      "###..##",
+      "#...###",
+      "#.#####",
+      "#######"
+    ], [1, 5], [5, 1], [4, 2], [[1, 4], [4, 3]], [[3, 4], [5, 2]]),
+    make(7, "远路的意义", "07 / 未来藏在转角", "花座就在附近，但通向它的回声，需要走一条远路。", "从中央小路向上，绕到右上方机关，再向下。你需要回声从门的上方追来。", [
+      "#######",
+      "#.....#",
+      "#.###.#",
+      "#...#.#",
+      "###.#.#",
+      "#.....#",
+      "#######"
+    ], [1, 5], [5, 5], [5, 2], [[5, 1]], [[5, 3]]),
+    make(8, "此刻，刚刚好", "08 / 把时间种成花", "最后一朵花。两次约定，两段回响，最后同时抵达。", "左侧机关为上方的门开路；右上机关为右侧的门开路。在每道门前，让回声接力。", [
+      "#######",
+      "#.....#",
+      "#.###.#",
+      "#...#.#",
+      "#.###.#",
+      "#.....#",
+      "#######"
+    ], [1, 5], [5, 5], [5, 2], [[1, 3], [5, 1]], [[2, 1], [5, 3]])
+  ];
+  function initialState(level) {
+    const p = __spreadValues({}, level.start);
+    return { p, e: __spreadValues({}, p), queue: [__spreadValues({}, p), __spreadValues({}, p), __spreadValues({}, p)], moves: 0 };
+  }
+  function isGateOpen(level, state2) {
+    return level.switches.some((p) => same(p, state2.p) || same(p, state2.e));
+  }
+  function step(level, state2, action) {
+    var _a;
+    const delta = vectors[action];
+    if (!delta) return state2;
+    const p = { x: state2.p.x + delta[0], y: state2.p.y + delta[1] };
+    if (((_a = level.grid[p.y]) == null ? void 0 : _a[p.x]) !== ".") return state2;
+    if (action !== "wait" && level.gates.some((g) => same(g, p)) && !isGateOpen(level, state2)) return state2;
+    const queue = [...state2.queue.map((p2) => __spreadValues({}, p2)), p];
+    const e = queue.shift();
+    return { p, e, queue, moves: state2.moves + 1 };
+  }
+  function isWon(level, state2) {
+    return same(state2.p, level.goal) && same(state2.e, level.echoGoal);
+  }
+  var stateKey = (s) => [s.p, s.e, ...s.queue].map((p) => p.x + "," + p.y).join("|");
+  function solve(level, state2 = initialState(level)) {
+    if (isWon(level, state2)) return [];
+    const nodes = [{ state: state2, parent: -1, action: null }];
+    const seen = /* @__PURE__ */ new Set([stateKey(state2)]);
+    for (let i = 0; i < nodes.length; i++) {
+      const current = nodes[i];
+      for (const action of actions) {
+        const next = step(level, current.state, action);
+        if (next === current.state) continue;
+        const key = stateKey(next);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const index2 = nodes.push({ state: next, parent: i, action }) - 1;
+        if (isWon(level, next)) {
+          const solution = [];
+          for (let j = index2; nodes[j].parent !== -1; j = nodes[j].parent) solution.push(nodes[j].action);
+          return solution.reverse();
+        }
+      }
+    }
+    return null;
+  }
+
+  // ../three-beats/dist/app.js
+  var $ = (id) => document.getElementById(id);
+  var eq = (a, b) => a.x === b.x && a.y === b.y;
+  var coordinate = (p) => "".concat(String.fromCharCode(65 + p.x)).concat(p.y + 1);
+  var names = { up: "向上 ↑", right: "向右 →", down: "向下 ↓", left: "向左 ←", wait: "等一拍 · 空格" };
+  var saved = { completed: [], best: {}, current: 0 };
+  try {
+    const data = JSON.parse(localStorage.getItem("three-beats-v1") || "null");
+    if (data && Array.isArray(data.completed)) saved = __spreadProps(__spreadValues(__spreadValues({}, saved), data), { completed: data.completed.filter((x) => Number.isInteger(x) && x >= 0 && x < levels.length), best: data.best || {} });
+  } catch (e) {
+  }
+  var index = Math.max(0, Math.min(Math.floor(Number(saved.current) || 0), levels.length - 1, unlocked()));
+  var state;
+  var history = [];
+  var soundOn = false;
+  var audio;
+  var touchStart = null;
+  var geometry;
+  function persist() {
+    try {
+      localStorage.setItem("three-beats-v1", JSON.stringify(saved));
+    } catch (e) {
+    }
+  }
+  function unlocked() {
+    return Math.min(levels.length - 1, saved.completed.length ? Math.max(...saved.completed) + 1 : 0);
+  }
+  function feedback(text, important = false) {
+    $("feedback").textContent = text;
+    $("feedback").classList.toggle("important", important);
+  }
+  function note(freq = 330, duration = 0.1, volume = 0.035, delay = 0) {
+    if (!soundOn) return;
+    try {
+      audio || (audio = new (window.AudioContext || window.webkitAudioContext)());
+      audio.resume();
+      const o = audio.createOscillator(), g = audio.createGain(), t = audio.currentTime + delay;
+      o.type = "sine";
+      o.frequency.value = freq;
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(volume, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(1e-3, t + duration);
+      o.connect(g);
+      g.connect(audio.destination);
+      o.start(t);
+      o.stop(t + duration + 0.02);
+    } catch (e) {
+    }
+  }
+  function flower(cx, cy, color, lit = false, scale = 1) {
+    return '<g transform="translate('.concat(cx, " ").concat(cy, ") scale(").concat(scale, ')" opacity="').concat(lit ? 1 : 0.6, '">').concat(Array.from({ length: 6 }, (_, i) => '<ellipse cx="0" cy="-12" rx="5.3" ry="8.5" fill="'.concat(color, '" transform="rotate(').concat(i * 60, ')"/>')).join(""), '<circle r="6" fill="#173c32"/><circle r="2.5" fill="').concat(color, '"/></g>');
+  }
+  function shrub(cx, cy, seed) {
+    const rotate = seed % 4 * 40;
+    return '<g transform="translate('.concat(cx, " ").concat(cy, ") rotate(").concat(rotate, ')" opacity="').concat(0.45 + seed % 3 * 0.1, '"><path d="M0 16V-14M0 5L-12-7M0-1L12-13" fill="none" stroke="#56785a" stroke-width="1.3"/><ellipse cx="-8" cy="0" rx="5" ry="10" fill="#41694f" transform="rotate(-42 -8 0)"/><ellipse cx="8" cy="-8" rx="5" ry="11" fill="#567a56" transform="rotate(42 8 -8)"/><ellipse cx="0" cy="-14" rx="4.5" ry="9" fill="#6e8b60"/></g>');
+  }
+  function buildBoard() {
+    const l = levels[index], rows = l.grid.length, cols = l.grid[0].length, c = Math.min(57, 420 / Math.max(rows, cols));
+    const x0 = (560 - cols * c) / 2, y0 = (470 - rows * c) / 2 + 4;
+    geometry = { c, x0, y0 };
+    const xy = (p) => [x0 + (p.x + 0.5) * c, y0 + (p.y + 0.5) * c];
+    let tiles = "", labels = "", decor = "";
+    for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+      const cx = x0 + (x + 0.5) * c, cy = y0 + (y + 0.5) * c;
+      if (l.grid[y][x] === "#") tiles += shrub(cx, cy, x * 17 + y * 11);
+      else tiles += '<rect x="'.concat(cx - c / 2 + 2.5, '" y="').concat(cy - c / 2 + 2.5, '" width="').concat(c - 5, '" height="').concat(c - 5, '" rx="8" fill="').concat((x + y) % 2 ? "#244b3c" : "#294e3e", '" stroke="#91b07c" stroke-opacity=".10"/><circle cx="').concat(cx - 15, '" cy="').concat(cy + 15, '" r="1" fill="#8da375" opacity=".3"/>');
+    }
+    for (let x = 0; x < cols; x++) labels += '<text x="'.concat(x0 + (x + 0.5) * c, '" y="').concat(y0 - 13, '" text-anchor="middle">').concat(String.fromCharCode(65 + x), "</text>");
+    for (let y = 0; y < rows; y++) labels += '<text x="'.concat(x0 - 15, '" y="').concat(y0 + (y + 0.5) * c + 3, '" text-anchor="middle">').concat(y + 1, "</text>");
+    let targets = "";
+    for (const [p, color, type] of [[l.goal, "#f3c76e", "gold"], [l.echoGoal, "#8cd4bd", "mint"]]) {
+      const [x, y] = xy(p);
+      targets += '<g id="target-'.concat(type, '"><circle class="target-ring" cx="').concat(x, '" cy="').concat(y, '" r="').concat(c * 0.34, '" fill="').concat(color, '" fill-opacity=".055" stroke="').concat(color, '" stroke-width="1" stroke-dasharray="2 4"/>').concat(flower(x, y, color, false, 0.9), "</g>");
+    }
+    const switches = l.switches.map((p, i) => {
+      const [x, y] = xy(p);
+      return '<g class="switch"><rect x="'.concat(x - 16, '" y="').concat(y - 16, '" width="32" height="32" rx="6" fill="#bdcea2" fill-opacity=".1" stroke="#c8dd9e" stroke-opacity=".7"/><path d="M').concat(x - 7, " ").concat(y, "L").concat(x, " ").concat(y - 7, "L").concat(x + 7, " ").concat(y, "L").concat(x, " ").concat(y + 7, 'Z" fill="none" stroke="#d5e6b4"/><circle cx="').concat(x, '" cy="').concat(y, '" r="2" fill="#d5e6b4"/></g>');
+    }).join("");
+    const gates = l.gates.map((p) => {
+      const [x, y] = xy(p);
+      return '<g class="gate" transform="translate('.concat(x, " ").concat(y, ')"><rect x="-21" y="-21" width="42" height="42" rx="6" fill="#6e8b60" fill-opacity=".35" stroke="#bdcea2" stroke-opacity=".5"/><g class="gate-bars"><path d="M-12-16V16M0-16V16M12-16V16" stroke="#c6d2a5" stroke-width="3" stroke-linecap="round"/></g><path d="M-5 0L0-5L5 0L0 5Z" fill="#dce9b9"/></g>');
+    }).join("");
+    decor += '<g opacity=".25" stroke="#a9bd83" fill="none"><path d="M20 37h20M30 27v20"/><circle cx="529" cy="427" r="10"/><path d="M518 418l22 18M520 436l18-18"/></g><text x="30" y="440" fill="#a7c091" opacity=".3" font-size="8" letter-spacing="2">'.concat(String(index + 1).padStart(2, "0"), " / 08</text>");
+    $("board").innerHTML = '<defs><filter id="orb-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="7"/></filter></defs>'.concat(decor, "<g>").concat(tiles, '</g><g font-family="Arial,sans-serif" font-size="8" fill="#83a083" opacity=".65">').concat(labels, "</g>").concat(targets).concat(switches).concat(gates, '<path id="echo-path" class="echo-path" fill="none" stroke="#a9d7b5" stroke-width="1.5" opacity=".25"/><g id="footprints"></g><g id="echo-actor" class="actor"><circle r="23" fill="#8cd4bd" opacity=".10" filter="url(#orb-glow)"/><path d="M-15 2C-15-10-8-17 0-17S15-10 15 2V15L9 11L4 15L-2 11L-8 15L-15 11Z" fill="#8cd4bd" fill-opacity=".85" stroke="#b1e6cc" stroke-width="1.3"/><ellipse cx="-5" cy="-1" rx="1.6" ry="2.3" fill="#224a3d"/><ellipse cx="5" cy="-1" rx="1.6" ry="2.3" fill="#224a3d"/><path d="M-3 6q3 2 6 0" fill="none" stroke="#3b7b62" stroke-linecap="round"/></g><g id="player-actor" class="actor"><ellipse cy="17" rx="14" ry="4" fill="#07291b" opacity=".45"/><circle r="23" fill="#f3c76e" opacity=".22" filter="url(#orb-glow)"/><circle r="15" fill="#e0aa4d"/><circle cy="-2" r="14" fill="#f3c76e"/><ellipse cx="-4" cy="-8" rx="6" ry="3" transform="rotate(-25 -4 -8)" fill="#ffe4a8" opacity=".65"/><ellipse cx="-5" cy="0" rx="1.6" ry="2.3" fill="#674b26"/><ellipse cx="5" cy="0" rx="1.6" ry="2.3" fill="#674b26"/><path d="M-3 6q3 2 6 0" fill="none" stroke="#98713c" stroke-linecap="round"/><path d="M0-16q-1-9 8-9q0 8-8 9" fill="#c6df8e" stroke="#173c32" stroke-width="1"/></g>');
+  }
+  function render() {
+    const l = levels[index], { c, x0, y0 } = geometry, xy = (p) => [x0 + (p.x + 0.5) * c, y0 + (p.y + 0.5) * c];
+    const overlap = eq(state.p, state.e);
+    let [px, py] = xy(state.p), [ex, ey] = xy(state.e);
+    if (overlap) {
+      px += 7;
+      ex -= 7;
+      ey -= 6;
+    }
+    $("player-actor").style.transform = "translate(".concat(px, "px,").concat(py, "px)");
+    $("echo-actor").style.transform = "translate(".concat(ex, "px,").concat(ey, "px)");
+    $("echo-actor").style.opacity = overlap ? ".65" : "1";
+    $("echo-path").setAttribute("d", [state.e, ...state.queue, state.p].map((p, i) => "".concat(i ? "L" : "M").concat(xy(p).join(" "))).join(" "));
+    $("footprints").innerHTML = state.queue.map((p, i) => {
+      const [x, y] = xy(p);
+      return '<circle cx="'.concat(x, '" cy="').concat(y, '" r="').concat(3 + i, '" fill="#a4d1ac" opacity="').concat(0.12 + i * 0.08, '"/>');
+    }).join("");
+    document.querySelectorAll(".gate-bars").forEach((g) => g.style.opacity = isGateOpen(l, state) ? ".12" : "1");
+    document.querySelectorAll(".gate").forEach((g) => g.style.opacity = isGateOpen(l, state) ? ".4" : "1");
+    document.querySelectorAll(".switch").forEach((g, i) => g.style.opacity = eq(state.p, l.switches[i]) || eq(state.e, l.switches[i]) ? "1" : ".55");
+    $("target-gold").style.opacity = eq(state.p, l.goal) ? "1" : ".7";
+    $("target-mint").style.opacity = eq(state.e, l.echoGoal) ? "1" : ".7";
+    $("moves").textContent = String(state.moves).padStart(2, "0");
+    $("par").textContent = l.par;
+    $("queue").innerHTML = state.queue.map((p, i) => '<div class="queue-item"><div class="queue-box '.concat(i === 0 ? "first" : "", '" title="').concat(i + 1, "步后，回声到").concat(coordinate(p), '"><i>+').concat(i + 1, "</i><b>").concat(coordinate(p), "</b></div></div>")).join("");
+    $("undo").disabled = history.length === 0;
+    $("board").setAttribute("aria-label", "第".concat(index + 1, "关 ").concat(l.title, "。你在").concat(coordinate(state.p), "，回声在").concat(coordinate(state.e), "，金色花座").concat(coordinate(l.goal), "，青色花座").concat(coordinate(l.echoGoal), "。已走").concat(state.moves, "步。"));
+    const won = isWon(l, state);
+    $("win-panel").hidden = !won;
+    document.querySelectorAll("[data-action]").forEach((b) => b.disabled = won);
+    $("hint").disabled = won;
+    if (won) showWin();
+  }
+  function nav() {
+    $("levels").innerHTML = levels.map((l, i) => '<button class="'.concat(i === index ? "active " : "").concat(saved.completed.includes(i) ? "completed" : "", '" data-level="').concat(i, '" aria-label="第').concat(i + 1, "关 ").concat(l.title).concat(saved.completed.includes(i) ? "，已完成" : "").concat(i > unlocked() ? "，尚未解锁" : "", '" ').concat(i > unlocked() ? "disabled" : "", " ").concat(i === index ? 'aria-current="step"' : "", ">").concat(String(i + 1).padStart(2, "0"), "</button>")).join("");
+    $("progress-text").textContent = "已点亮 ".concat(saved.completed.length, " / ").concat(levels.length, " 座花园");
+    $("progress-fill").style.width = "".concat(saved.completed.length / levels.length * 100, "%");
+  }
+  function loadLevel(i) {
+    index = i;
+    saved.current = i;
+    persist();
+    state = initialState(levels[i]);
+    history = [];
+    $("chapter-number").textContent = String(i + 1).padStart(2, "0");
+    $("level-title").textContent = levels[i].title;
+    $("level-description").textContent = levels[i].description;
+    $("board-caption").textContent = levels[i].gates.length ? "方形机关，可以替你开门" : "同时抵达，让花盛开";
+    buildBoard();
+    nav();
+    render();
+    feedback(i === 0 ? "先试着向右走。回声要等三拍，才会跟上你。" : levels[i].hint);
+  }
+  function showWin() {
+    const last = index === levels.length - 1;
+    if (!saved.completed.includes(index)) {
+      saved.completed.push(index);
+      persist();
+    }
+    if (!saved.best[index] || state.moves < saved.best[index]) {
+      saved.best[index] = state.moves;
+      persist();
+    }
+    $("win-kicker").textContent = last ? "ALL GARDENS AWAKENED" : "GARDEN AWAKENED";
+    $("win-title").textContent = last ? "每一个你，都刚好。" : "刚刚好，遇见你。";
+    $("win-detail").textContent = "".concat(state.moves, " 步点亮花园").concat(state.moves === levels[index].par ? " · 恰好是最短路线 ✧" : " · 最佳 ".concat(saved.best[index], " 步"));
+    $("next").innerHTML = last ? "回到第一座花园 <span>↶</span>" : "下一座花园 <span>→</span>";
+    nav();
+    feedback(last ? "八座花园都亮了。谢谢你，等了另一个自己。" : "花园醒来了。现在的你，和过去的你，刚好相遇。", true);
+  }
+  function act(action) {
+    if ($("help-dialog").open || isWon(levels[index], state)) return;
+    const next = step(levels[index], state, action);
+    if (next === state) {
+      $("board-wrap").classList.remove("board-shake");
+      void $("board-wrap").offsetWidth;
+      $("board-wrap").classList.add("board-shake");
+      feedback("这里还过不去。撞墙不计步，可以换个方向。");
+      note(140, 0.08, 0.02);
+      return;
+    }
+    history.push(state);
+    state = next;
+    render();
+    if (isWon(levels[index], state)) {
+      [392, 494, 587, 784].forEach((f, i) => note(f, 0.45, 0.04, i * 0.12));
+    } else {
+      note(action === "wait" ? 294 : 330 + state.p.x * 26 + state.p.y * 12, 0.12);
+      feedback(action === "wait" ? "你等了一拍。回声下一步会到 ".concat(coordinate(state.queue[0]), "。") : "回声下一步会到 ".concat(coordinate(state.queue[0]), "。").concat(isGateOpen(levels[index], state) && levels[index].gates.length ? "机关被压住了，门已打开。" : ""));
+    }
+  }
+  function undo() {
+    if (!history.length) return;
+    state = history.pop();
+    render();
+    feedback("退回上一拍。过去也一起回来了。");
+    note(270, 0.12);
+  }
+  document.querySelectorAll("[data-action]").forEach((b) => b.addEventListener("click", () => act(b.dataset.action)));
+  $("undo").addEventListener("click", undo);
+  $("reset").addEventListener("click", () => loadLevel(index));
+  $("next").addEventListener("click", () => loadLevel((index + 1) % levels.length));
+  $("replay").addEventListener("click", () => loadLevel(index));
+  $("levels").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-level]");
+    if (b && !b.disabled) loadLevel(Number(b.dataset.level));
+  });
+  $("hint").addEventListener("click", () => {
+    const result = solve(levels[index], state);
+    feedback((result == null ? void 0 : result.length) ? "下一拍可以".concat(names[result[0]], "。").concat(levels[index].hint) : "这条路暂时无法相遇。试着撤销几拍，或者从头来过。", true);
+  });
+  $("sound").addEventListener("click", () => {
+    soundOn = !soundOn;
+    $("sound").setAttribute("aria-pressed", String(soundOn));
+    $("sound").setAttribute("aria-label", soundOn ? "关闭声音" : "开启声音");
+    $("sound").querySelector("span").textContent = soundOn ? "声音开" : "声音关";
+    if (soundOn) note(440, 0.18);
+  });
+  $("help").addEventListener("click", () => $("help-dialog").showModal());
+  $("close-help").addEventListener("click", () => $("help-dialog").close());
+  $("start-help").addEventListener("click", () => $("help-dialog").close());
+  $("help-dialog").addEventListener("click", (e) => {
+    if (e.target === $("help-dialog")) {
+      const r = e.target.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.target.close();
+    }
+  });
+  document.addEventListener("keydown", (e) => {
+    if ($("help-dialog").open || e.altKey || e.ctrlKey || e.metaKey) return;
+    const k = e.key.toLowerCase();
+    const action = { arrowup: "up", w: "up", arrowright: "right", d: "right", arrowdown: "down", s: "down", arrowleft: "left", a: "left", " ": "wait" }[k];
+    if (action) {
+      if (k === " " && isWon(levels[index], state)) return;
+      e.preventDefault();
+      if (!e.repeat) act(action);
+    } else if (k === "z") {
+      e.preventDefault();
+      undo();
+    } else if (k === "r") {
+      e.preventDefault();
+      loadLevel(index);
+    }
+  });
+  $("board-wrap").addEventListener("pointerdown", (e) => {
+    if (e.target.closest("button")) return;
+    touchStart = { x: e.clientX, y: e.clientY };
+  });
+  $("board-wrap").addEventListener("pointerup", (e) => {
+    if (!touchStart) return;
+    const dx = e.clientX - touchStart.x, dy = e.clientY - touchStart.y;
+    touchStart = null;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 18) return;
+    act(Math.abs(dx) > Math.abs(dy) ? dx > 0 ? "right" : "left" : dy > 0 ? "down" : "up");
+  });
+  $("board-wrap").addEventListener("pointercancel", () => touchStart = null);
+  loadLevel(index);
+})();
+</script>
+</body>
+</html>

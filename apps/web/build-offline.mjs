@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const project=path.dirname(fileURLToPath(import.meta.url));
+const source=path.join(project,'src');
+const target=process.argv[2]?path.resolve(process.argv[2]):path.resolve(project,'../../releases/v1.0.0/web/three-beats-offline.html');
+let html=await fs.readFile(path.join(source,'index.html'),'utf8');
+const css=(await fs.readFile(path.join(source,'style.css'),'utf8')).replace(/^@import[^;]+;\s*/, '');
+const engine=(await fs.readFile(path.join(source,'engine.js'),'utf8')).replace(/^export /gm,'');
+const app=(await fs.readFile(path.join(source,'app.js'),'utf8')).replace(/^import[^\n]+\n/,'');
+html=html.replace('<link rel="stylesheet" href="style.css">',`<style>${css}</style>`).replace('<script type="module" src="app.js"></script>',`<script type="module">\n${engine}\n${app}\n</script>`);
+await fs.mkdir(path.dirname(target),{recursive:true});
+await fs.writeFile(target,html,'utf8');
+console.log('Offline game saved: '+target);

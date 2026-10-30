@@ -1,0 +1,22 @@
+{
+  "description": "慢三拍：与三步前的自己合作的八关解谜小游戏",
+  "projectname": "three-beats-garden",
+  "appid": "",
+  "compileType": "minigame",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "minified": false,
+    "urlCheck": true
+  },
+  "packOptions": {
+    "ignore": [
+      {"type": "folder", "value": "dev"},
+      {"type": "folder", "value": "docs"},
+      {"type": "folder", "value": "tests"},
+      {"type": "folder", "value": "tools"},
+      {"type": "file", "value": "package.json"},
+      {"type": "file", "value": "README.md"}
+    ]
+  }
+}

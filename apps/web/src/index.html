@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173c34">
+  <meta name="description" content="和三步之前的自己，一起点亮一座小花园。一个关于移动、等待与默契的原创网页解谜小游戏。">
+  <title>慢三拍 · Three Beats Later</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="site-shell">
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="慢三拍首页"><span class="brand-mark">↶</span><span>慢三拍<small>THREE BEATS LATER</small></span></a>
+    <div class="top-actions"><span class="edition">一个关于等待的小小实验 · 001</span><button id="sound" class="icon-button" aria-label="开启声音" aria-pressed="false">♪<span>声音关</span></button><button id="help" class="help-button">如何玩 <span>↗</span></button></div>
+  </header>
+
+  <main class="game-layout">
+    <aside class="intro">
+      <div class="eyebrow"><span class="tiny-spark">✳</span> A LITTLE PUZZLE ABOUT TIME</div>
+      <h1>和过去的你，<br>碰个<span class="word-flower">面<span>✳</span></span>。</h1>
+      <p class="lead">你向前一步，回声慢三拍。<br>留一点时间，给另一个自己。</p>
+      <div class="rule-card">
+        <div class="rule-people"><span class="mini-orb gold"></span><span class="rule-dots">· · ·</span><span class="mini-orb mint"></span><span class="delay-tag">延迟 3 步</span></div>
+        <p><b>金色是你，青色是你的回声。</b><br>让两位同时停在各自的花座上，<br>小花园就会醒来。</p>
+      </div>
+      <div class="chapter-copy"><span class="small-label">当前花园 / <span id="chapter-number">01</span></span><h2 id="level-title">初次回响</h2><p id="level-description">用三步，认识另一个自己。</p></div>
+      <div class="progress-copy"><span id="progress-text">已点亮 0 / 8 座花园</span><span>✳</span></div><div class="progress-track"><span id="progress-fill"></span></div>
+      <div class="quiet-note">不必走得更快。<br>等一等，也是一种前进。</div>
+    </aside>
+
+    <section class="play-area" aria-label="解谜游戏">
+      <div class="board-panel">
+        <div class="board-top"><span class="garden-label"><span class="live-dot"></span> THE ECHO GARDEN</span><div class="board-stats"><span>步数 <b id="moves">00</b></span><span>最短 <b id="par">—</b></span></div></div>
+        <div class="board-wrap" id="board-wrap"><svg id="board" viewBox="0 0 560 470" role="img" aria-label="花园棋盘：使用方向键移动金色角色，空格等待"></svg>
+          <div id="win-panel" class="win-panel" hidden><span class="win-flower">✳</span><div class="small-label" id="win-kicker">GARDEN AWAKENED</div><h2 id="win-title">刚刚好，遇见你。</h2><p id="win-detail"></p><button id="next" class="primary-button">下一座花园 <span>→</span></button><button id="replay" class="text-button">再走一次</button></div>
+        </div>
+        <div class="board-bottom"><span><i class="legend-dot gold"></i>此刻的你</span><span><i class="legend-dot mint"></i>三步前的你</span><span class="board-caption" id="board-caption">同时抵达，让花盛开</span></div>
+      </div>
+
+      <div class="echo-strip"><div class="echo-label"><span class="small-label">回声预告</span><span>接下来，它会走到</span></div><div class="queue" id="queue"></div><span class="queue-end">然后是<br><b>现在的你 ↗</b></span></div>
+
+      <div class="control-row"><div class="move-controls" aria-label="移动控制"><button data-action="left" aria-label="向左移动">←</button><div class="vertical-controls"><button data-action="up" aria-label="向上移动">↑</button><button data-action="down" aria-label="向下移动">↓</button></div><button data-action="right" aria-label="向右移动">→</button><button data-action="wait" class="wait-button">等一拍 <kbd>空格</kbd></button></div><div class="utility-controls"><button id="undo" title="撤销 (Z)">↶ <span>撤销</span></button><button id="reset" title="重来 (R)">⟳ <span>重来</span></button><button id="hint" title="获取下一步提示">✧ <span>提示</span></button></div></div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite">试着按方向键移动。空格可以原地等一拍。</div>
+    </section>
+  </main>
+
+  <footer class="bottom-bar"><div class="chapter-label">花园手记 <small>CHAPTERS</small></div><nav id="levels" aria-label="选择关卡"></nav><span class="footer-note">8 座花园，一点点默契。<span>无需计时 · 随时撤销</span></span></footer>
+</div>
+
+<dialog id="help-dialog"><button class="dialog-close" id="close-help" aria-label="关闭玩法说明">×</button><div class="eyebrow">A SMALL GUIDE</div><h2>给回声一点时间。</h2><p>方向键 / WASD 移动金色的你，空格原地等待。也可以点屏幕上的方向按钮，或在棋盘上滑动。</p><div class="guide-step"><span>01</span><p><b>回声会重走你三步前的位置。</b><br>下方三个坐标，按顺序预告它接下来会到哪里。</p></div><div class="guide-step"><span>02</span><p><b>两个人，同时抵达。</b><br>金色的你停在金色花座，青色回声停在青色花座，就能过关。</p></div><div class="guide-step"><span>03</span><p><b>替彼此留一扇门。</b><br>任一角色压住方形机关，就能打开同图案的门。门在行动开始时判定，回声可以穿门。</p></div><p class="guide-tip">撞墙不计步。Z 撤销，R 重来。没有倒计时，慢慢想就好。</p><button id="start-help" class="primary-button">知道了，去碰个面 <span>→</span></button></dialog>
+<script type="module" src="app.js"></script>
+</body>
+</html>

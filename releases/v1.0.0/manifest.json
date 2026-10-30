@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "artifacts": [
+    {
+      "path": "releases/v1.0.0/android/three-beats-1.0.0.apk",
+      "bytes": 29100,
+      "sha256": "16c16cbcb5d8d2425647053d083e67371d38e53d6da0af470f94db63eef398d0"
+    },
+    {
+      "path": "releases/v1.0.0/android/three-beats-android-source-1.0.0.zip",
+      "bytes": 30218,
+      "sha256": "9f896e0df5cd5ad86cbc0901b8f490d95e1438f161ee6febf1b0431338dd2a85"
+    },
+    {
+      "path": "releases/v1.0.0/android/verification.txt",
+      "bytes": 2593,
+      "sha256": "c599590d9b5182a6f9a59043cfd201f75aa0d5f7683f05c2f67954a2e55743ea"
+    },
+    {
+      "path": "releases/v1.0.0/web/three-beats-offline.html",
+      "bytes": 37286,
+      "sha256": "a7f97b20f3e7c442db4a40cd68e3359f556c0a275384d7c93a3edb334d243066"
+    },
+    {
+      "path": "releases/v1.0.0/web/three-beats-web-source-1.0.0.zip",
+      "bytes": 18519,
+      "sha256": "5274216999c7ee1087fab05016eb92f1f3680d21eaed843660afcb236aba971b"
+    },
+    {
+      "path": "releases/v1.0.0/wechat/three-beats-wechat-1.0.0.zip",
+      "bytes": 169216,
+      "sha256": "3907fde08977b7b24bc99d13086b87541d31b4c57486ffde7f5b9b167162a703"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+**/signing/
+**/*.p12
+**/*.pfx
+**/*.jks
+**/*.keystore
+**/signing.local.json
+**/project.private.config.json
+**/local-private-backup/
+# Toolchains and temporary output
+.cache/
+**/.cache/
+**/build/
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/.openai/
+**/android-sdk-cache/
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

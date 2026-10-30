@@ -1,0 +1,17 @@
+<resources>
+  <string name="app_name">慢三拍</string>
+  <color name="paper">#F3F2EA</color>
+  <color name="icon_background">#153C32</color>
+  <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+    <item name="android:fontFamily">sans</item>
+    <item name="android:colorAccent">#69844C</item>
+    <item name="android:windowLightStatusBar">true</item>
+    <item name="android:windowLightNavigationBar">true</item>
+    <item name="android:statusBarColor">@color/paper</item>
+    <item name="android:navigationBarColor">@color/paper</item>
+    <item name="android:windowBackground">@color/paper</item>
+    <item name="android:windowActionModeOverlay">true</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:forceDarkAllowed">false</item>
+  </style>
+</resources>
